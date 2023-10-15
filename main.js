@@ -23,6 +23,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 const collectionName = "users";
+const collectionBlog = "blog";
 
 let fetchedData = [];
 
@@ -53,8 +54,21 @@ const postsEl = document.getElementById("posts");
 const createNewAccountView = document.getElementById("create-new-account-view");
 
 const chartWrapper = document.getElementById("chart-wrapper");
+const communityPage = document.getElementById("community-page");
+const communityBtn = document.getElementById("community-icon-btn");
+const backBtn = document.getElementById("back-icon-btn");
+const posts = document.getElementById("posts");
+
+const postButtonCommunityEl = document.getElementById("post-community-btn");
+const postTextAreaEl = document.getElementById("post-community-input");
+
+backBtn.addEventListener("click", () => showLoggedInView());
 
 /* == UI - Event Listeners == */
+
+postButtonCommunityEl.addEventListener("click", postCommunity);
+
+communityBtn.addEventListener("click", communityBtnPressed);
 
 signInWithGoogleButtonEl.addEventListener("click", authSignInWithGoogle);
 
@@ -172,6 +186,7 @@ function returnMoodValueFromElementId(elementId) {
 }
 
 function showLoggedOutView() {
+  hideView(communityPage);
   hideView(viewLoggedIn);
   showView(viewLoggedOut);
 }
@@ -182,6 +197,7 @@ function showCreatedNewAccountView() {
 }
 
 function showLoggedInView() {
+  hideView(communityPage);
   hideView(viewLoggedOut);
   showView(viewLoggedIn);
 }
@@ -256,9 +272,9 @@ async function addPostToDB(user) {
   }
 }
 
-function convertToMood(num){
-  let possibleMoods = ["Awful", "Bad", "Meh", "Good", "Amazing"]
-  return possibleMoods[num - 1]
+function convertToMood(num) {
+  let possibleMoods = ["Awful", "Bad", "Meh", "Good", "Amazing"];
+  return possibleMoods[num - 1];
 }
 
 function fetchInRealtimeAndRenderPostsFromDB() {
@@ -273,7 +289,6 @@ function fetchInRealtimeAndRenderPostsFromDB() {
           mood: convertToMood(mood),
           date: displayDate(createdAt),
         });
-        console.log(doc.data());
         createChart(fetchedData);
       }
     });
@@ -321,12 +336,11 @@ let chartInstance = null;
 chartInstance?.destroy();
 
 function createChart(fetchedData) {
-  document.getElementById("acquisitions").innerHTML = ""
-  console.log(fetchedData);
+  document.getElementById("acquisitions").innerHTML = "";
   (async function () {
     const data = fetchedData;
 
-    const yLabels = ["Awful", "Bad", "Meh", "Good", "Amazing"]
+    const yLabels = ["Awful", "Bad", "Meh", "Good", "Amazing"];
 
     // Convert "userMood" to indices in the yLabels array
     const dataPoints = data.map((row) => {
@@ -366,4 +380,71 @@ function createChart(fetchedData) {
       },
     });
   })();
+}
+
+function communityBtnPressed() {
+  showCommunityPage();
+  renderCommunityPosts();
+}
+
+function showCommunityPage() {
+  hideView(viewLoggedOut);
+  hideView(viewLoggedIn);
+  showView(communityPage);
+}
+
+function postCommunity() {
+  const user = auth.currentUser;
+
+  if (postTextAreaEl.value) {
+    addPostToDBC(user);
+    resetAllMoodElements(moodEmojiEls);
+  }
+}
+
+async function addPostToDBC(user) {
+  try {
+    const docRef = await addDoc(collection(db, collectionBlog), {
+      uid: user.uid,
+      photoURL: user.photoURL,
+      content: postTextAreaEl.value,
+      createdAt: serverTimestamp(),
+    });
+    clearInputField(postTextAreaEl);
+    console.log("Document written with ID: ", docRef.id);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+function renderCommunityPosts(){
+  fetchInRealtimeAndRenderPostsFromDBC()
+}
+
+function fetchInRealtimeAndRenderPostsFromDBC() {
+  onSnapshot(collection(db, collectionBlog), (querySnapshot) => {
+    postsEl.innerHTML = " "
+      querySnapshot.forEach((doc) => {
+          renderPost(postsEl, doc.data())
+      })
+  })
+}
+
+
+function renderPost(postsEl, postData) {
+  postsEl.innerHTML += `
+      <div class="post">
+          <div class="header">
+              <h3>${displayDate(postData.createdAt)}</h3>
+              <img src="${postData.photoURL}">
+          </div>
+          <p>
+              ${replaceNewlinesWithBrTags(postData.content)}
+          </p>
+      </div>
+  `
+}
+
+function replaceNewlinesWithBrTags(inputString) {
+  return inputString.replace(/\n/g, "<br>")
 }

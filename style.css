@@ -255,6 +255,47 @@ button:hover {
   margin: 0;
 }
 
+#community-page{
+  display: none;
+}
+
+.post-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#book-btn{
+  margin-top: 20px;
+  background-color: aqua;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: black;
+  font-family: inherit;
+  font-weight: bold;
+  padding: var(--element-padding);
+  border-radius: var(--element-border-radius);
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.1em;
+  text-align: center;
+  border: var(--border-width) solid var(--dark-color);
+}
+
+#post-community-btn{
+  margin-top: 20px;
+}
+
+#community{
+  width: 50px;
+  margin-right: 30px;
+}
+
+.community-icon-btn{
+  margin-right: auto;
+}
+
 #create-new-account-view{
   display: none;
 }
@@ -327,4 +368,45 @@ nav {
 
 .chart-wrapper{
   width: 800px;
+}
+
+/* === Posts Section === */
+#posts{
+  margin-top: 30px;
+}
+
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+margin-bottom: 1.8em;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  padding: 0.8em;
+  border-radius: var(--element-border-radius);
+  gap: 0.4em;
+}
+
+.post .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post .header h3 {
+  font-size: 1em;
+}
+
+.post .header img {
+  width: 2em;
+  height: 2em;
+}
+
+.post p {
+  font-size: 0.9em;
+  line-height: 1.3em;
 }
