@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Calistoga&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>AlcoWell</title>
+  </head>
+  <body>
+    <section id="logged-out-view">
+      <div class="container">
+        <h1 class="app-title">AlcoWell</h1>
+
+        <div class="provider-buttons">
+          <button id="sign-in-with-google-btn" class="provider-btn">
+            <img src="assets/providers/google.png" class="google-btn-logo" />
+            Sign in with Google
+          </button>
+        </div>
+
+        <div class="auth-fields-and-buttons">
+          <input id="email-input" type="email" placeholder="Email" />
+          <input id="password-input" type="password" placeholder="Password" />
+
+          <h2 id="password-warning">
+            * Password should be atleast 6 characters long
+          </h2>
+
+          <button id="sign-in-btn" class="primary-btn">Sign in</button>
+          <button id="create-account-btn" class="secondary-btn">
+            Create Account
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="logged-in-view">
+      <div class="container">
+        <nav>
+          <button id="sign-out-btn" class="icon-btn">
+            <img src="assets/icons/icon-sign-out.svg" class="icon-img-btn" />
+          </button>
+        </nav>
+        <div class="app-container">
+          <div class="user-section">
+            <img id="user-profile-picture" />
+            <h2 id="user-greeting"></h2>
+            <h2 id="user-question">
+              Did you drink alcohol? How are you feeling?
+            </h2>
+            <div class="mood-emojis">
+              <button id="mood-1" class="mood-emoji-btn">
+                <img src="assets/emojis/1.png" />
+                Awful
+              </button>
+              <button id="mood-2" class="mood-emoji-btn">
+                <img src="assets/emojis/2.png" />
+                Bad
+              </button>
+              <button id="mood-3" class="mood-emoji-btn">
+                <img src="assets/emojis/3.png" />
+                Meh
+              </button>
+              <button id="mood-4" class="mood-emoji-btn">
+                <img src="assets/emojis/4.png" />
+                Good
+              </button>
+              <button id="mood-5" class="mood-emoji-btn">
+                <img src="assets/emojis/5.png" />
+                Amazing
+              </button>
+            </div>
+
+            <div class="post-section">
+              <button id="post-btn" class="primary-btn">Post</button>
+            </div>
+          </div>
+        </div>
+
+        <section id="chart">
+          <div id="chart-wrapper"><canvas id="acquisitions"></canvas></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="create-new-account-view">
+      <div class="container">
+        <div>
+          <span>Hey @username! Welcome</span>
+          <br />
+          <span>Why are you using this app? </span>
+
+          <label class="radio-label">
+            <input type="radio" name="drink_purpose" value="TO LOG DRINKING" />
+            TO LOG DRINKING
+          </label>
+
+          <label class="radio-label">
+            <input type="radio" name="drink_purpose" value="TO REDUCE IT" />
+            TO REDUCE IT
+          </label>
+
+          <label class="radio-label">
+            <input
+              type="radio"
+              name="drink_purpose"
+              value="TO GET COMPLETELY SOBER"
+            />
+            TO GET COMPLETELY SOBER
+          </label>
+
+          <button class="next-button">NEXT</button>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .app-container {
+            overflow: hidden;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 246, 232, 1);
+            width: 360px;
+            height: 640px;
+            position: absolute;
+        }
+
+        .welcome-message {
+            color: rgba(0, 0, 0, 1);
+            width: 284px;
+            height: 29px;
+            position: absolute;
+            left: 51px;
+            top: 172px;
+            font-family: Poppins;
+            text-align: left;
+            font-size: 20px;
+            letter-spacing: 0;
+        }
+
+        .next-button-container {
+            background-color: rgba(255, 222, 0, 1);
+            width: 150px;
+            height: 58px;
+            position: absolute;
+            left: 100px;
+            top: 466px;
+            border-radius: 11px;
+            border: 3px solid rgba(0, 0, 0, 1);
+        }
+
+        .next-button {
+            color: rgba(0, 0, 0, 1);
+            width: 60px;
+            height: 25px;
+            position: absolute;
+            left: 147px;
+            top: 482px;
+            font-family: Poppins;
+            text-align: left;
+            font-size: 20px;
+            letter-spacing: 0;
+        }
+
+        .app-purpose {
+            color: rgba(0, 0, 0, 1);
+            width: 259px;
+            height: 14px;
+            position: absolute;
+            left: 57px;
+            top: 247px;
+            font-family: Poppins;
+            text-align: left;
+            font-size: 18px;
+            letter-spacing: 0;
+        }
+
+        .option-container {
+            background-color: rgba(255, 255, 255, 1);
+            width: 208px;
+            height: 33px;
+            position: absolute;
+        }
+
+        .option-container-1 {
+            left: 77px;
+            top: 296px;
+        }
+
+        .option-container-2 {
+            left: 78px;
+            top: 336px;
+        }
+
+        .option-container-3 {
+            left: 77px;
+            top: 377px;
+        }
+
+        .radio-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .radio-button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <span class="welcome-message">Hey @username! Welcome</span>
+        <div class="next-button-container"></div>
+        <span class="next-button">
+            <button class="next-button">NEXT</button>
+        </span>
+        <span class="app-purpose">Why are you using this app?</span>
+
+        <div class="option-container option-container-1">
+            <label class="radio-label">
+                <input type="radio" name="drink_purpose" value="TO LOG DRINKING" class="radio-button">
+                TO LOG DRINKING
+            </label>
+        </div>
+
+        <div class="option-container option-container-2">
+            <label class="radio-label">
+                <input type="radio" name="drink_purpose" value="TO REDUCE IT" class="radio-button">
+                TO REDUCE IT
+            </label>
+        </div>
+
+        <div class="option-container option-container-3">
+            <label class="radio-label">
+                <input type="radio" name="drink_purpose" value="TO GET COMPLETELY SOBER" class="radio-button">
+                TO GET COMPLETELY SOBER
+            </label>
+        </div>
+
+        <div class="e38_7"></div>
+    </div>
+</body>
+</html>
