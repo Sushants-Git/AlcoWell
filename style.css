@@ -424,7 +424,9 @@ nav {
   align-items: center;
   position: fixed;
   max-width: 400px;
-  max-height: 300px;
+  max-height: 600px;
+  padding-left: 15px;
+  padding-right: 15px;
   background-color: var(--secondary-light-color);
   margin: auto;
   left: 0;
@@ -438,6 +440,11 @@ nav {
   border-radius: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
+}
+
+#info-page-wrapper p{
+  font-size:12px;
+  margin-top: 10px;
 }
 
 .close{
