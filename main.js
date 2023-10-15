@@ -417,19 +417,18 @@ async function addPostToDBC(user) {
   }
 }
 
-function renderCommunityPosts(){
-  fetchInRealtimeAndRenderPostsFromDBC()
+function renderCommunityPosts() {
+  fetchInRealtimeAndRenderPostsFromDBC();
 }
 
 function fetchInRealtimeAndRenderPostsFromDBC() {
   onSnapshot(collection(db, collectionBlog), (querySnapshot) => {
-    postsEl.innerHTML = " "
-      querySnapshot.forEach((doc) => {
-          renderPost(postsEl, doc.data())
-      })
-  })
+    postsEl.innerHTML = " ";
+    querySnapshot.forEach((doc) => {
+      renderPost(postsEl, doc.data());
+    });
+  });
 }
-
 
 function renderPost(postsEl, postData) {
   postsEl.innerHTML += `
@@ -442,9 +441,17 @@ function renderPost(postsEl, postData) {
               ${replaceNewlinesWithBrTags(postData.content)}
           </p>
       </div>
-  `
+  `;
 }
 
 function replaceNewlinesWithBrTags(inputString) {
-  return inputString.replace(/\n/g, "<br>")
+  return inputString.replace(/\n/g, "<br>");
 }
+
+document.getElementById("info-button").addEventListener("click", () => {
+  showView(document.getElementById("info-page"));
+});
+
+document.getElementById("close").addEventListener("click", () => {
+  hideView(document.getElementById("info-page"));
+});

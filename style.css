@@ -1,16 +1,16 @@
 :root {
   --primary-color: #ff4081;
   --primary-light-color: #ffe769;
-  --secondary-color: #FFE4BA;
-  --secondary-light-color: #FFF6E8;
+  --secondary-color: #ffe4ba;
+  --secondary-light-color: #fff6e8;
   --post-color: #62eea8;
   --delete-color: #ff9f9f;
   --light-color: #fffefc;
   --grey-color: #747e79;
   --dark-color: #000000;
 
-  --primary-font: 'Lexend', sans-serif;
-  --seconday-font: 'Lexend', sans-serif;
+  --primary-font: "Lexend", sans-serif;
+  --seconday-font: "Lexend", sans-serif;
 
   --border-width: 3px;
   --element-border-radius: 5px;
@@ -255,18 +255,18 @@ button:hover {
   margin: 0;
 }
 
-#community-page{
+#community-page {
   display: none;
 }
 
-.post-section{
+.post-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#book-btn{
+#book-btn {
   margin-top: 20px;
   background-color: aqua;
   padding: 1.5rem;
@@ -283,24 +283,24 @@ button:hover {
   border: var(--border-width) solid var(--dark-color);
 }
 
-#post-community-btn{
+#post-community-btn {
   margin-top: 20px;
 }
 
-#community{
+#community {
   width: 50px;
   margin-right: 30px;
 }
 
-.community-icon-btn{
+.community-icon-btn {
   margin-right: auto;
 }
 
-#create-new-account-view{
+#create-new-account-view {
   display: none;
 }
 
-#password-warning{
+#password-warning {
   font-size: 15px;
   display: flex;
   justify-content: center;
@@ -321,7 +321,7 @@ nav {
   justify-content: flex-end;
 }
 
-#user-question{
+#user-question {
   margin-top: 10px;
   text-align: center;
 }
@@ -332,7 +332,7 @@ nav {
   display: flex;
 }
 
-.mood-emojis img{
+.mood-emojis img {
   border: none;
 }
 
@@ -365,13 +365,12 @@ nav {
   opacity: 0.5;
 }
 
-
-.chart-wrapper{
+.chart-wrapper {
   width: 800px;
 }
 
 /* === Posts Section === */
-#posts{
+#posts {
   margin-top: 30px;
 }
 
@@ -379,7 +378,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 1em;
-margin-bottom: 1.8em;
+  margin-bottom: 1.8em;
 }
 
 .post {
@@ -409,4 +408,45 @@ margin-bottom: 1.8em;
 .post p {
   font-size: 0.9em;
   line-height: 1.3em;
+}
+
+#info {
+  width: 40px;
+  margin-left: auto;
+}
+
+#info-page {
+  display: none;
+}
+
+#info-page {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  max-width: 400px;
+  max-height: 300px;
+  background-color: var(--secondary-light-color);
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.close{
+  margin-left: auto;
+  width: 30px;
+  margin-right: 20px;
+}
+
+.close:hover{
+  opacity: 0.5;
+  cursor: pointer;
 }
